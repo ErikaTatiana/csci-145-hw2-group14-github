@@ -1,5 +1,3 @@
-package com.company;
-
 public class MatrixColumn {
     private ValueNode first;
     private MatrixColumn next;
@@ -19,7 +17,6 @@ public class MatrixColumn {
 
     public void insert(ValueNode value) {
         if(first == null){
-            value.setNextRow(first);
             this.first = value;
         } //empty column
         else if((value.getRow() < first.getRow())){

@@ -1,9 +1,7 @@
-package com.company;
-
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-// Erika, gitlab test
+
 public class MatrixReader {
     public SparseMatrix read(String file){
         try {
@@ -19,7 +17,7 @@ public class MatrixReader {
             while(readFile.hasNextLine()){
                 String [] spaceArray = readFile.nextLine().split(" ");
 
-                for(int i = 0; i < spaceArray.length; i++){
+                for(int i = 0; i <= spaceArray.length-1; i++){
                     String [] commaArray = spaceArray[i].split(",");
 
                     if(commaArray[0].equals("") || commaArray[commaArray.length-1].equals("")){
@@ -31,9 +29,13 @@ public class MatrixReader {
 
                     sparseMatrix.insert(rowCounter, column, value);
 
-                    rowCounter++;
+                    if(i == spaceArray.length-1){
+                        rowCounter++;
+                    }
                 }
             }
+
+            return sparseMatrix;
         }
         catch (FileNotFoundException e) {
             System.out.println("File not found. ");
@@ -42,5 +44,4 @@ public class MatrixReader {
         return null;
     }
 }
-
 
